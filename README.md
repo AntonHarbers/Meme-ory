@@ -8,7 +8,9 @@ A memory card game for the odin project curriculum using react.
 
 ```
     Styling:
-        Basic layout and make things look kind of retro with portals maybe? (decide on a theme)
+        Make Basic Layout
+        Space Portal Theme
+        Animate Cards to swirl and get sucked into portals and then come out again swirling?
         Animations (cards get sucked into the portals and spit out again)
         Animate buttons and scene transitions
 

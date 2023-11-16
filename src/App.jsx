@@ -3,6 +3,8 @@ import Game from './components/Game';
 import Menu from './components/Menu';
 import { getHighscoreFromStorage } from './utils/storage';
 import './styles/App.css';
+import GameOverScreen from './components/GameOverScreen';
+import { schuffleGifs } from './utils/schuffle';
 
 function App() {
   const [gifs, setGifs] = useState([]);
@@ -16,46 +18,55 @@ function App() {
   const [wonGame, setWonGame] = useState(false);
 
   const handleClick = (gif) => {
-    schuffleGifs();
-
+    setGifs(schuffleGifs(gifs));
     if (clickedGifs.includes(gif.id)) {
-      setGameOver(true);
-      setScore(0);
-      setClickedGifs([]);
-      setWonGame(false);
+      LoseGame();
     } else {
-      setScore(score + 1);
-      setHighScore(score + 1 > highScore ? score + 1 : highScore);
-      setClickedGifs([...clickedGifs, gif.id]);
-
-      if (clickedGifs.length === gifs.length - 1) {
-        setGameOver(true);
-        setWonGame(true);
-        setScore(0);
-        setClickedGifs([]);
+      CorrectGuess(gif.id);
+      if (HasGuessedAllCards()) {
+        WinGame();
         return;
       }
     }
   };
 
+  const HasGuessedAllCards = () => {
+    return clickedGifs.length === gifs.length - 1;
+  };
+
+  const CorrectGuess = (gifId) => {
+    setScore(score + 1);
+    setHighScore(score + 1 > highScore ? score + 1 : highScore);
+    setClickedGifs([...clickedGifs, gifId]);
+  };
+
+  const LoseGame = () => {
+    setGameOver(true);
+    setWonGame(false);
+  };
+
+  const WinGame = () => {
+    setGameOver(true);
+    setWonGame(true);
+  };
+
   const handleBackToMenu = () => {
+    setScore(0);
+    setClickedGifs([]);
     setGifs([]);
     setGameStarted(false);
     setGameOver(false);
   };
 
-  const schuffleGifs = () => {
-    const shuffledGifs = gifs.sort(() => Math.random() - 0.5);
-    setGifs(shuffledGifs);
-  };
-
   const handleReplayGame = () => {
+    setScore(0);
     setClickedGifs([]);
     setGameStarted(true);
     setGameOver(false);
     setWonGame(false);
   };
 
+  // fetches gifs from giphy api
   useEffect(() => {
     if (gameStarted === false) {
       setScore(0);
@@ -72,8 +83,10 @@ function App() {
         setGifs(data.data);
       })
       .catch((error) => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameStarted]);
 
+  // updates high score in local storage
   useEffect(() => {
     localStorage.setItem('highscore', highScore);
   }, [highScore]);
@@ -101,13 +114,12 @@ function App() {
         />
       )}
       {gameOver && (
-        <div className="gameOverContainer">
-          {wonGame ? <h1>You won the game!</h1> : <h1>Game Over! You lost!</h1>}
-          <button onClick={handleReplayGame}>
-            {wonGame ? 'Play Again' : 'Try again'}
-          </button>
-          <button onClick={handleBackToMenu}>Back to Menu</button>
-        </div>
+        <GameOverScreen
+          wonGame={wonGame}
+          score={score}
+          handleReplayGame={handleReplayGame}
+          handleBackToMenu={handleBackToMenu}
+        />
       )}
     </div>
   );
