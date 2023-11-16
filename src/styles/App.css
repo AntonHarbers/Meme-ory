@@ -12,3 +12,11 @@
 button:hover {
   cursor: pointer;
 }
+
+h1 {
+  background-color: #1a1a1a79;
+  padding: var(--medium-padding);
+  border-radius: 10px;
+  color: var(--secondary-color);
+  font-size: var(--extra-large-font-size);
+}
