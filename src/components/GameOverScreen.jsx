@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import '../styles/GameOverScreen.css';
+import { BackIcon, RetryIcon } from '../utils/icons';
 
 export default function GameOverScreen({
   wonGame,
@@ -15,10 +16,10 @@ export default function GameOverScreen({
       ) : (
         <h1>Game Over! You lost!</h1>
       )}
-      <button onClick={handleReplayGame}>
-        {wonGame ? 'Play Again' : 'Try again'}
+      <button className="retryBtn" onClick={handleReplayGame}>
+        {RetryIcon()}
       </button>
-      <button onClick={handleBackToMenu}>Back to Menu</button>
+      <button onClick={handleBackToMenu}>{BackIcon()}</button>
     </div>
   );
 }

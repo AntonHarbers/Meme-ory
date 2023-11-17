@@ -1,5 +1,6 @@
 import MemoryCard from './MemoryCard';
 import '../styles/Game.css';
+import { BackIcon } from '../utils/icons';
 
 /* eslint-disable react/prop-types */
 export default function Game({
@@ -8,6 +9,7 @@ export default function Game({
   score,
   highScore,
   setGameStarted,
+  shrink,
 }) {
   return (
     <div className="gameContainer">
@@ -17,13 +19,20 @@ export default function Game({
       <div className="cardsContainer">
         {gifs.length > 0 ? (
           gifs.map((gif) => (
-            <MemoryCard key={gif.id} gif={gif} handleClick={handleClick} />
+            <MemoryCard
+              key={gif.id}
+              gif={gif}
+              handleClick={handleClick}
+              shrink={shrink}
+            />
           ))
         ) : (
           <h1 className="loadingPlaceholder">Loading...</h1>
         )}
       </div>
-      <button onClick={() => setGameStarted(false)}>Back to Menu</button>
+      <button className="backBtn" onClick={() => setGameStarted(false)}>
+        {BackIcon()}
+      </button>
     </div>
   );
 }

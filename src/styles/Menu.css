@@ -7,15 +7,28 @@
   gap: 1rem;
 }
 
+label {
+  font-weight: 800;
+}
+label:hover {
+  cursor: pointer;
+}
+
 input {
   width: 300px;
-  height: 30px;
+  height: 40px;
   border-radius: 5px;
-  border: 1px solid black;
-  padding: 0.5rem;
   font-size: 1rem;
-  text-align: center;
   outline: none;
+  background-color: transparent;
+  display: flex;
+  background-color: white;
+  text-align: center;
+}
+
+input:hover,
+input:focus {
+  border: 2px solid gold;
 }
 
 .primaryBtn {
@@ -31,7 +44,52 @@ input {
 }
 
 .startGameBtn {
+  background-color: rgba(13, 157, 13, 0.621);
+  color: white;
+  transition: all 0.1s ease-in-out;
+  width: 300px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.startGameBtn:hover {
+  background-color: #0d9d0d;
+  cursor: pointer;
+}
+
+.startGameBtn:active {
+  background-color: #0d9d0d50;
 }
 
 .resetHighScoreBtn {
+  margin-top: 1rem;
+  background-color: red;
+  color: white;
+  width: 80%;
+  transition: all 0.1s ease-in-out;
+}
+
+.resetHighScoreBtn:hover {
+  background-color: #ff0000a6;
+  cursor: pointer;
+}
+
+.resetHighScoreBtn:active {
+  background-color: #ff000050;
+}
+
+.highScoreContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  color: white;
+  justify-content: center;
+  align-items: center;
 }

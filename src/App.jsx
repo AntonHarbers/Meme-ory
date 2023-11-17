@@ -16,13 +16,20 @@ function App() {
   const [clickedGifs, setClickedGifs] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [wonGame, setWonGame] = useState(false);
+  const [shrink, setShrink] = useState(true);
 
   const handleClick = (gif) => {
     setGifs(schuffleGifs(gifs));
-    if (clickedGifs.includes(gif.id)) {
+    // shrink all cards
+    setShrink(true);
+    // unshrink all cards
+    setTimeout(() => {
+      setShrink(false);
+    }, 500);
+    if (clickedGifs.includes(gif)) {
       LoseGame();
     } else {
-      CorrectGuess(gif.id);
+      CorrectGuess(gif);
       if (HasGuessedAllCards()) {
         WinGame();
         return;
@@ -56,6 +63,7 @@ function App() {
     setGifs([]);
     setGameStarted(false);
     setGameOver(false);
+    setShrink(true);
   };
 
   const handleReplayGame = () => {
@@ -64,6 +72,7 @@ function App() {
     setGameStarted(true);
     setGameOver(false);
     setWonGame(false);
+    setShrink(false);
   };
 
   // fetches gifs from giphy api
@@ -93,7 +102,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>The Odin Project - Memory Game</h1>
+      <h1>Meme-ory</h1>
       {gameStarted ? (
         <Game
           gifs={gifs}
@@ -101,6 +110,7 @@ function App() {
           score={score}
           highScore={highScore}
           setGameStarted={setGameStarted}
+          shrink={shrink}
         />
       ) : (
         <Menu
@@ -111,6 +121,7 @@ function App() {
           setGameStarted={setGameStarted}
           highScore={highScore}
           setHighScore={setHighScore}
+          setShrink={setShrink}
         />
       )}
       {gameOver && (

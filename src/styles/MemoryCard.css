@@ -1,6 +1,25 @@
 .cardImg {
-  height: 15dvw;
-  width: 15dvw;
+  height: 0dvw;
+  width: 0dvw;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.5s ease-in-out;
+}
+
+.shrinking {
+  height: 10dvw;
+  width: 10dvw;
+  transform: scale(0);
+  transition: all 0.5s ease-in-out;
+  opacity: 0.5;
+}
+
+.growing {
+  transform: scale(1);
+  transition: all 0.5s ease-in-out;
+  height: 10dvw;
+  width: 10dvw;
+  opacity: 1;
 }
 
 .cardContainer {
@@ -8,10 +27,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   margin: var(--small-margin);
+  background-image: url('../../public/portal.png');
+  height: 20dvw;
+  width: 20dvw;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
+.cardButton {
+  border-radius: 50%;
+  opacity: 1;
+  background-color: transparent;
+  border: 0px;
+}
 .cardButton:hover {
   cursor: pointer;
+  box-shadow: 0px 0 100px 10px gold;
 }

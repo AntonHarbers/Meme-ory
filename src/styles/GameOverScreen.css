@@ -10,4 +10,32 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  background-image: url('../../public/background.png');
+}
+
+.retryIcon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.retryBtn {
+  border-radius: 50%;
+  background-color: blue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.retryBtn:hover {
+  cursor: pointer;
+  background-color: white;
+  color: blue;
+}
+
+.retryBtn:active {
+  transform: scale(0.9);
 }

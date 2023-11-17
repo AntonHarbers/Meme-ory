@@ -21,6 +21,8 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  user-select: none;
+
   font-family: 'Roboto', sans-serif;
 }
 
@@ -28,6 +30,9 @@ body {
   background-image: url('../../public/background.png');
   /* make the background larger than the screen so that when overscroll happens it still shows it */
   background-color: var(--primary-color);
+  background-size: 120%;
+  background-position: center;
+  background-repeat: no-repeat;
 
   color: var(--primary-color);
   height: 100dvh;
