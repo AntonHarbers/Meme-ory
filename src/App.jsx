@@ -19,12 +19,12 @@ function App() {
   const [shrink, setShrink] = useState(true);
 
   const handleClick = (gif) => {
-    setGifs(schuffleGifs(gifs));
     // shrink all cards
     setShrink(true);
     // unshrink all cards
     setTimeout(() => {
       setShrink(false);
+      setGifs(schuffleGifs(gifs));
     }, 500);
     if (clickedGifs.includes(gif)) {
       LoseGame();

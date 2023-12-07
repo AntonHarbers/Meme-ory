@@ -22,7 +22,7 @@ export default function Menu({
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <label htmlFor="limitInput">Limit Input</label>
+      <label htmlFor="limitInput">Number of Portals</label>
       <input
         type="number"
         max={30}

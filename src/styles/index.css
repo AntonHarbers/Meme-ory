@@ -23,7 +23,7 @@
   outline: none;
   user-select: none;
 
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Sono', monospace;
 }
 
 body {
@@ -36,4 +36,10 @@ body {
 
   color: var(--primary-color);
   height: 100dvh;
+}
+
+@media (max-width: 1000px) {
+  body {
+    background-size: 400%;
+  }
 }

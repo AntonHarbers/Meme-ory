@@ -45,3 +45,22 @@
   cursor: pointer;
   box-shadow: 0px 0 100px 10px gold;
 }
+
+@media (max-width: 1000px) {
+  .cardContainer {
+    height: 40dvw;
+    width: 40dvw;
+  }
+  .cardImg {
+    height: 0dvw;
+    width: 0dvw;
+  }
+  .shrinking {
+    height: 25dvw;
+    width: 25dvw;
+  }
+  .growing {
+    height: 25dvw;
+    width: 25dvw;
+  }
+}

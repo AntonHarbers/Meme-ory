@@ -14,10 +14,54 @@ button:hover {
 }
 
 h1 {
-  background-color: #1a1a1a79;
   padding: var(--medium-padding);
   border-radius: 10px;
   color: var(--secondary-color);
   font-size: var(--extra-large-font-size);
   z-index: 1;
+  font-size: 5rem;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 20px rgb(0, 200, 250);
+  animation: animateHeaderTextShadow 2s ease-in-out infinite;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(44, 255, 7);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff0000;
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+}
+
+@keyframes animateHeaderTextShadow {
+  0% {
+    text-shadow: 0px 0px 20px rgb(0, 200, 250);
+  }
+  40% {
+    text-shadow: 0px 2px 20px rgb(0, 54, 250);
+  }
+  80% {
+    text-shadow: 2px 0px 20px rgb(12, 250, 0);
+  }
+  100% {
+    text-shadow: 0px 0px 20px rgb(0, 200, 250);
+  }
 }
